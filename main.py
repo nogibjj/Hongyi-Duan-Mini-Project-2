@@ -25,5 +25,8 @@ def get_std(x):
     
 def get_plot(x):
     plt.plot(x)
+    plt.title(x.name)
+    plt.xlabel('X')
+    plt.ylabel('Y')
     plt.show()
     
