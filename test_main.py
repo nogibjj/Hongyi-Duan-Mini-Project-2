@@ -1,29 +1,29 @@
 from main import *
 import pandas as pd
 
-def test_df_exists(df):
+df = None
+try:
+    df = pd.read_excel("Project-Management-Sample-Data.xlsx")
+except FileNotFoundError:
+    pass
+x = df['Days Required']
+print(x.describe())
+
+def test_df_exists():
     assert df is not None, "DataFrame was not loaded, check if it exists."
     
-def test_mean(x):
+def test_mean():
     assert round(get_mean(x), 5) == round(x.mean(), 5)
 
-def test_median(x):
+def test_median():
     assert round(get_median(x), 5) == round(x.median(), 5)
 
-def test_std(x):
+def test_std():
     assert round(get_std(x), 5) == round(x.std(), 5)
 
 if __name__ == "__main__":
-    data = None
-    try:
-        data = pd.read_excel("Project-Management-Sample-Data.xlsx")
-    except FileNotFoundError:
-        pass
-    days = data['Days Required']
-    print(days.describe())
-    
-    test_df_exists(data)
-    test_mean(days)
-    test_median(days)
-    test_std(days)
-    get_plot(days)
+    test_df_exists()
+    test_mean()
+    test_median()
+    test_std()
+    get_plot()
